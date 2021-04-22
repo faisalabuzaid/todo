@@ -40,7 +40,7 @@ app.post('/new', addTask);
 app.get('/edit/:id', renderEdit);
 app.put('/edit/:id', editTask);
 app.delete('/delete/:id', deleteTask);
-app.get('indv/:id', renderInd);
+app.get('/indv/:id', renderInd);
 
 
 function renderHome (req, res) {
@@ -66,8 +66,10 @@ function addTask (req, res) {
 }
 
 function renderInd (req, res) {
+    console.log('ind req', req.params.id);
     const SQL='select * from list where id=$1';
     client.query(SQL, [req.params.id]).then(data => {
+        console.log(data.rows);
         res.render('indv', {'data':data.rows[0]})
     })
 }
