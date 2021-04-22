@@ -16,7 +16,7 @@
     <main>
         <section>
             <% data.forEach(element => { %>
-                <h3> Your Task Name <br> <%= element.name %></h3>
+               <a href='/indv/<%=element.id%>'><h3> Your Task Name <br> <%= element.name %></h3></a> 
                 <p> Your Task Desciptin <br> <%= element.description%></p>
                 <p>Your Task Status <br><%= element.status%></p>
                     <a href="/edit/<%= element.id%>"><button class="submit" type="submit">Update Character</button></a>

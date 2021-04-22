@@ -6,6 +6,7 @@ const methodOverride = require('method-override');
 const cors = require('cors');
 const path = require('path');
 const { response, query } = require('express');
+const { render } = require('ejs');
 
 // Environment variables
 require('dotenv').config();
@@ -39,7 +40,7 @@ app.post('/new', addTask);
 app.get('/edit/:id', renderEdit);
 app.put('/edit/:id', editTask);
 app.delete('/delete/:id', deleteTask);
-
+app.get('indv/:id', renderInd);
 
 
 function renderHome (req, res) {
@@ -62,6 +63,13 @@ function addTask (req, res) {
     client.query(SQL, [name, description, status]).then(data => {
       res.redirect('/');
         });
+}
+
+function renderInd (req, res) {
+    const SQL='select * from list where id=$1';
+    client.query(SQL, [req.params.id]).then(data => {
+        res.render('indv', {'data':data.rows[0]})
+    })
 }
 
 function renderEdit (req, res) {
