@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/new">New Task</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            <% data.forEach(element => { %>
+                <h3> Your Task Name <br> <%= element.name %></h3>
+                <p> Your Task Desciptin <br> <%= element.description%></p>
+                <p>Your Task Status <br><%= element.status%></p>
+                    <a href="/edit/<%= element.id%>"><button class="submit" type="submit">Update Character</button></a>
+                <form method="post" action="/delete/<%=element.id%>?_method=DELETE">
+                    <input type="hidden" name="id" value="<%=element.id%>">
+                    <button class="submit" type="submit">Delete Character</button>
+                </form>
+            <% }) %>
+        </section>
+    </main>
+</body>
+</html>

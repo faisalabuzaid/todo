@@ -1,0 +1,30 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <header>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/new">New Task</a>
+        </nav>
+    </header>
+    <main>
+        <section>
+            
+            <form method="post" action="/edit/<%=data.id%>?_method=PUT">
+                <input type="text" name="name" id="" value="<%=data.name%>">
+            <input type="text" name="description" value="<%=data.description%>">
+            <input type="text" name="status" id="" value="<%=data.status%>">
+            <button type="submit">Update Task</button>
+            </form>
+        </section>
+    </main>
+</body>
+</html>
